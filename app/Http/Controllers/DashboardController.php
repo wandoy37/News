@@ -3,15 +3,15 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Category;
 
 class DashboardController extends Controller
 {
-    public function __construct()
+    public function index(Request $request)
     {
-        $this->middleware('auth');
-    }
-    public function index()
-    {
-        return view('dashboard.home');
+        $categories = Category::paginate(3);
+        return view('dashboard.home', [
+            'data' => $categories
+        ]);
     }
 }

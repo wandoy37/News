@@ -72,7 +72,8 @@
                             <div class="col col-stats ml-3 ml-sm-0">
                                 <div class="numbers">
                                     <p class="card-category">Category</p>
-                                    <h4 class="card-title">$ 1,345</h4>
+
+                                    <h4 class="card-title">{{ $data->total() }}</h4>
                                 </div>
                             </div>
                         </div>

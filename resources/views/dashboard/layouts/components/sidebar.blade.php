@@ -42,14 +42,14 @@
                     </span>
                     <h4 class="text-section">Menu Navigation</h4>
                 </li>
-                <li class="nav-item">
-                    <a href="{{ url('/dashboard') }}">
+                <li class="nav-item {{ (request()->segment(1) == 'dashboard') ? 'active' : '' }}">
+                    <a href="{{ route('dashboard') }}">
                         <i class="far icon-home"></i>
                         <p>Dashboard</p>
                     </a>
                 </li>
-                <li class="nav-item">
-                    <a href="{{ url('/category') }}">
+                <li class="nav-item {{ (request()->segment(1) == 'category') ? 'active' : '' }}">
+                    <a href="{{ route('category') }}">
                         <i class="flaticon-shapes"></i>
                         <p>Category</p>
                     </a>
