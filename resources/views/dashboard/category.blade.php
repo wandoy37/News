@@ -5,7 +5,7 @@
 <div class="container">
     <div class="page-inner">
         <div class="page-header">
-            <h4 class="page-title">Dashboard</h4>
+            <h4 class="page-title">Category</h4>
             <ul class="breadcrumbs">
                 <li class="nav-home">
                     <a href="#">
@@ -62,8 +62,8 @@
                                     <td class="text-center">
                                         <form action="{{ url("category/$d->id") }}" method="POST">
                                             @csrf @method('DELETE')
-                                            <a href="{{ url("/category/$d->id/edit") }}" class="btn btn-primary btn-rounded">Edit</a>
-                                            <button type="submit" class="btn btn-danger btn-rounded">delete</button>
+                                            <a href="{{ url("/category/$d->id/edit") }}" class="btn btn-primary btn-round btn-sm">Edit</a>
+                                            <button type="submit" class="btn btn-danger btn-round btn-sm">delete</button>
                                         </form>
                                     </td>
                                 </tr>

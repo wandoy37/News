@@ -140,5 +140,14 @@
 
 	<!-- Atlantis JS -->
 	<script src="{{ asset('admin/js/atlantis.min.js') }}"></script>
+
+	<script>
+		$('#summernote').summernote({
+			placeholder: 'Atlantis',
+			fontNames: ['Arial', 'Arial Black', 'Comic Sans MS', 'Courier New'],
+			tabsize: 2,
+			height: 300
+		});
+	</script>
 </body>
 </html>

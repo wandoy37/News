@@ -1,7 +1,9 @@
 <?php
 
+use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\DashboardController;
+use App\Models\Article;
 use App\Models\Category;
 use Illuminate\Support\Facades\Route;
 
@@ -24,6 +26,7 @@ Route::get('/', function () {
 Route::middleware(['auth'])->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
+    // Route Category
     // Menampilkan View Data Category
     Route::get('/category', [CategoryController::class, 'index'])->name('category');
     // Menampilkan View Tambah Data Category
@@ -36,4 +39,17 @@ Route::middleware(['auth'])->group(function () {
     Route::patch('/category/{id}', [CategoryController::class, 'update']);
     // // Menghapus Data Category Berdasarkan id
     Route::delete('category/{id}', [CategoryController::class, 'destroy']);
+
+    // Route Article
+    Route::get('/article', [ArticleController::class, 'index'])->name('article');
+    // Menampilkan View Tambah Data Artikel
+    Route::get('/article/create', [ArticleController::class, 'create']);
+    // // Membuat Data Article Baru
+    Route::post('/article', [ArticleController::class, 'store']);
+    // // Menampilkan Data Artikel berdasarkan slug
+    Route::get('/article/{slug}/edit', [ArticleController::class, 'edit'])->name('edit');
+    // // Update Data Article Berdasarkan slug
+    Route::patch('/article/{slug}', [ArticleController::class, 'update']);
+    // // Menghapus Data Artikel Berdasarkan id
+    Route::delete('article/{slug}', [ArticleController::class, 'destroy']);
 });

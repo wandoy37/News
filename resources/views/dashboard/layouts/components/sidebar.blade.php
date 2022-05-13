@@ -54,8 +54,8 @@
                         <p>Category</p>
                     </a>
                 </li>
-                <li class="nav-item">
-                    <a href="{{ url('/article') }}">
+                <li class="nav-item {{ (request()->segment(1) == 'article') ? 'active' : '' }}">
+                    <a href="{{ route('article') }}">
                         <i class="flaticon-interface-6"></i>
                         <p>Article</p>
                     </a>
