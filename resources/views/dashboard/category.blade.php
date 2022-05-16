@@ -57,7 +57,7 @@
                                 @foreach ($data as $d)
                                 <tr>
                                     <td>{{ $no++ }}</td>
-                                    <td>{{ $d->name }}</td>
+                                    <td class="text-capitalize">{{ $d->name }}</td>
                                     <td>{{ $d->slug }}</td>
                                     <td class="text-center">
                                         <form action="{{ url("category/$d->id") }}" method="POST">

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Requests\ArticleRequest;
 use App\Models\Article;
 use App\Models\Category;
 use App\Models\User;
@@ -31,9 +32,8 @@ class ArticleController extends Controller
         ]);
     }
 
-    public function store(Request $request)
+    public function store(ArticleRequest $request)
     {
-        // return $request->file('image')->store('article-images');
         Article::create([
             'title' => $request->title,
             'slug' => Str::slug($request->title),
@@ -47,17 +47,16 @@ class ArticleController extends Controller
         return redirect('/article');
     }
 
-    public function edit(Request $request, $slug)
+    public function edit($slug)
     {
         $artikel = Article::where('slug', $slug)->first();
-        // $artikel = Article::all();
         $kategori = Category::all();
         return view('dashboard.article_edit', compact('artikel', 'kategori'));
     }
 
-    public function update(Request $request, $slug)
+    public function update(ArticleRequest $request, $id)
     {
-        $artikel = Article::where('slug', $slug)->first();
+        $artikel = Article::find($id);
         $data = [
             'title' => $request->title,
             'slug' => Str::slug($request->title),
@@ -65,7 +64,6 @@ class ArticleController extends Controller
             'author_id' => auth()->user()->id,
             'category_id' => $request->category,
             'status' => $request->status,
-            // 'image' => $request->file('image')->store('article-images'),
         ];
 
         if ($request->file('image')) {

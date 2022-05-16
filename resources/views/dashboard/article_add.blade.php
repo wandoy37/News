@@ -29,7 +29,6 @@
 
         <form action="{{ url('/article') }}" method="post" enctype="multipart/form-data">
             @csrf
-            {{-- <input type="text" name="author_id" value="{{ Auth::user()->id }}" hidden> --}}
             <div class="row">
                 <div class="col-md-12">
                     <div class="card card-stats card-round">
@@ -37,21 +36,36 @@
                             <div class="col-8">
                                 <div class="form-group">
                                     <label for="title">Title</label>
-                                    <input type="text" name="title" class="form-control" id="title" placeholder="Title...">
+                                    <input type="text" name="title" class="form-control @error('title') is-invalid @enderror" id="title" placeholder="Title..." value="{{ old('title') }}">
+                                    @error('title')
+                                        <span class="text-danger">
+                                            {{ $message }}
+                                        </span>
+                                    @enderror
                                 </div>
                             </div>
                             <div class="col-4 mt-2">
                                 <div class="form-group">
                                     <label for="image">Images</label>
                                     <input type="file" name="image" class="form-control-file" id="image">
+                                    @error('image')
+                                    <span class="text-danger">
+                                        {{ $message }}
+                                    </span>
+                                    @enderror
                                 </div>
                             </div>
                         </div>
                         
                         <div class="form-group">
                             <label for="category">Category</label>
-                            <select class="form-control" name="category" id="category">
-                                <option>-Select Category-</option>
+                            <br>
+                            @error('category')
+                                <span class="text-danger">
+                                    {{ $message }}
+                                </span>
+                            @enderror
+                            <select class="form-control" name="category">
                                 @foreach ($category as $item)
                                 <option value="{{ $item->id }}">{{ $item->name }}</option>
                                 @endforeach
@@ -65,7 +79,13 @@
                     <div class="card card-stats card-round">
                         <div class="form-group">
                             <label for="summernote">Content</label>
-                            <textarea name="content" type="text" id="summernote"></textarea>
+                            <br>
+                            @error('content')
+                                <span class="text-danger">
+                                    {{ $message }}
+                                </span>
+                            @enderror
+                            <textarea name="content" type="text" id="summernote">{{ old('content') }}</textarea>
                         </div>
                         <div class="form-group d-flex justify-content-end pb-4 mr-4">
                             <input type="submit" name="status" value="publish" class="btn btn-info mr-4">

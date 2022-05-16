@@ -49,7 +49,7 @@ Route::middleware(['auth'])->group(function () {
     // // Menampilkan Data Artikel berdasarkan slug
     Route::get('/article/{slug}/edit', [ArticleController::class, 'edit'])->name('edit');
     // // Update Data Article Berdasarkan slug
-    Route::patch('/article/{slug}', [ArticleController::class, 'update']);
+    Route::patch('/article/{id}', [ArticleController::class, 'update']);
     // // Menghapus Data Artikel Berdasarkan id
     Route::delete('article/{slug}', [ArticleController::class, 'destroy']);
 });
