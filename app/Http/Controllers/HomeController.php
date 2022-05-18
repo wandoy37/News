@@ -33,7 +33,15 @@ class HomeController extends Controller
         //     return $sql;
         // }
         // return SqlWithBinding($artikel->latest()->toSql(), $artikel->getBindings());
-
         return view('home.index', compact('artikel', 'category'));
+    }
+
+    public function single($slug)
+    {
+        // Mengambil data Artikel berdasarkan slug
+        $artikel = Article::where('slug', $slug)->first();
+        // Mengambil data category
+        $category = Category::all();
+        return view('home.single', compact('artikel', 'category'));
     }
 }

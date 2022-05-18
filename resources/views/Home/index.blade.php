@@ -12,10 +12,14 @@
                 <div class="card mb-4">
                     <a href="#!"><img class="card-img-top" src="{{ asset('storage/' . $item->image) }}" width="100px" /></a>
                     <div class="card-body">
-                        <div class="small text-muted">{{ $item->created_at->diffForHumans() }}</div>
+                        <div class="small text-muted">
+                            {{ $item->created_at->diffForHumans() }}
+                        </div>
                         <h2 class="card-title h4">{{ $item->title }}</h2>
-                        <span class="badge badge-primary text-dark">{{ $item->status }}</span>
-                        <a class="btn btn-primary" href="#!">Read more →</a>
+                        <small>
+                            {!! Str::limit($item->content, 30) !!}
+                        </small>
+                        <a class="btn btn-primary" href="{{ url("/artikel/$item->slug") }}">Read more →</a>
                     </div>
                 </div>
             </div>

@@ -18,8 +18,10 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
+// Home Pages
 Route::get('/', [HomeController::class, 'index']);
+// Single Pages
+Route::get('/artikel/{slug}', [HomeController::class, 'single']);
 
 
 Route::middleware(['auth'])->group(function () {

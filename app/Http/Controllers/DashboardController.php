@@ -8,7 +8,7 @@ use App\Models\Category;
 
 class DashboardController extends Controller
 {
-    public function index(Request $request)
+    public function index()
     {
         $categories = Category::paginate(3);
         $article = Article::paginate(3);
