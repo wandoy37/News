@@ -5,33 +5,53 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content="" />
         <meta name="author" content="" />
-        <title>
-            {{ $artikel->title ?? 'Home' }}
-        </title>
+        <title>{{ $artikel->title ?? 'News - Home' }}</title>
         <!-- Favicon-->
-        <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+        <link rel="icon" type="image/x-icon" href="{{ asset('home/favicon.ico') }}" />
         <!-- Core theme CSS (includes Bootstrap)-->
         <link href="{{ asset('home/css/styles.css') }}" rel="stylesheet" />
     </head>
     <body>
-        <!-- Responsive navbar-->
+
+
         @include('home.layouts.components.navbar')
-        <!-- Page header with logo and tagline-->
+
+
         <header class="py-5 bg-light border-bottom mb-4">
             <div class="container">
                 <div class="text-center my-5">
                     <h1 class="fw-bolder">Welcome to News Home!</h1>
-                    <p class="lead mb-0">Build in Laravel and Bootstrap Framwork</p>
+                    <p class="lead mb-0">Portal Berita Sederhana</p>
                 </div>
             </div>
         </header>
-        <!-- Page content-->
         
         <div class="container">
-            @yield('main')
+            <div class="row">
+                @yield('main')
+                <!-- Side widgets-->
+                <div class="col-lg-4">
+                    <!-- Search widget-->
+                    <div class="card mb-4">
+                        <div class="card-header">Search</div>
+                        <div class="card-body">
+                            <form action="/">
+                            <div class="input-group">
+                                    <input class="form-control" type="text" name="search" placeholder="Search artikel..." value="{{ old('search') }}"/>
+                                    <button class="btn btn-primary" type="submit">Search</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <!-- Categories widget-->
+                    @include('home.layouts.components.categories')
+                    <!-- Side widget-->
+                    @include('home.layouts.components.widget')
+                </div>
+            </div>
         </div>
         <!-- Footer-->
-        <footer class="py-5 bg-dark">
+        <footer class="py-5 bg-primary">
             <div class="container"><p class="m-0 text-center text-white">Copyright &copy; Your Website 2022</p></div>
         </footer>
         <!-- Bootstrap core JS-->

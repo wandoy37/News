@@ -21,18 +21,7 @@ class HomeController extends Controller
         if (request('search')) {
             $artikel->where('title', 'LIKE', '%' . request('search') . '%');
         }
-        $artikel = $artikel->latest()->paginate(2);
-
-        // Method Testing Bang Duki
-        // function SqlWithBinding($sql, $bindDataArr)
-        // {
-        //     foreach ($bindDataArr as $binding) {
-        //         $value = is_numeric($binding) ? $binding : "'" . $binding . "'";
-        //         $sql = preg_replace('/\?/', $value, $sql, 1);
-        //     }
-        //     return $sql;
-        // }
-        // return SqlWithBinding($artikel->latest()->toSql(), $artikel->getBindings());
+        $artikel = $artikel->latest()->paginate(4);
         return view('home.index', compact('artikel', 'category'));
     }
 

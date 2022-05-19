@@ -1,68 +1,28 @@
 @extends('home.layouts.app')
 
 @section('main')
-<div class="row">
-    <!-- Blog entries-->
-    <div class="col-lg-8">
-        <!-- Nested row for non-featured blog posts-->
-        <div class="row">
-            
-            @foreach ($artikel as $item)
-            <div class="col-lg-6">
-                <div class="card mb-4">
-                    <a href="#!"><img class="card-img-top" src="{{ asset('storage/' . $item->image) }}" width="100px" /></a>
-                    <div class="card-body">
-                        <div class="small text-muted">
-                            {{ $item->created_at->diffForHumans() }}
-                        </div>
-                        <h2 class="card-title h4">{{ $item->title }}</h2>
-                        <small>
-                            {!! Str::limit($item->content, 30) !!}
-                        </small>
-                        <a class="btn btn-primary" href="{{ url("/artikel/$item->slug") }}">Read more →</a>
-                    </div>
+<div class="col-lg-8">
+    <div class="row">
+        @foreach ($artikel as $a)
+        <div class="col-lg-6">
+            <div class="card mb-4">
+                <a href="#!"><img class="card-img-top" src="{{ asset('storage/' . $a->image) }}" alt="..." /></a>
+                <div class="card-body">
+                    <div class="small text-muted">{{ $a->created_at->diffForHumans() }}</div>
+                    <span class="badge bg-info text-decoration-none link-light">{{ $a->category->name }}</span>
+                    <h2 class="card-title h4">{{ $a->title }}</h2>
+                    <a class="btn btn-primary" href="{{ url("/artikel/$a->slug") }}">Read more →</a>
                 </div>
             </div>
-            @endforeach
-
         </div>
-        <hr class="my-0" />
+        @endforeach
+    </div>
+    <!-- Pagination-->
+    <nav aria-label="Pagination">
+        <hr class="my-0 mb-2" />
         <div class="d-flex justify-content-center">
-            <!-- Pagination-->
-            <nav aria-label="Pagination" class="mt-2">
-                {{ $artikel->links('pagination::bootstrap-4') }}
-            </nav>
+            {{ $artikel->links('pagination::bootstrap-4') }}
         </div>
-    </div>
-    <!-- Side widgets-->
-    <div class="col-lg-4">
-        <!-- Search widget-->
-        <div class="card mb-4">
-            <div class="card-header">Search</div>
-            <div class="card-body">
-                <form action="/">
-                    <div class="input-group mb-3">
-                        <input type="text" class="form-control" name="search" placeholder="Search.." value="{{ request('search') }}">
-                        <button class="btn btn-outline-primary" type="submit">Search</button>
-                    </div>
-                </form>
-            </div>
-        </div>
-        <!-- Categories widget-->
-        <div class="card mb-4">
-            <div class="card-header">Categories</div>
-            <div class="card-body">
-                <div class="row">
-                    <div class="col-sm-6">
-                        <ul class="list-unstyled mb-0">
-                            @foreach ($category as $item)
-                                <li><a href="#!" class="badge bg-info">{{ $item->name }}</a></li>
-                            @endforeach
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
+    </nav>
+</div> 
 @endsection
