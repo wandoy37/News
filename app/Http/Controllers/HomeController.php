@@ -38,12 +38,12 @@ class HomeController extends Controller
 
     public function kategori(Category $category)
     {
-        $artikel = $category->articles->where('status', 'publish');
-
+        $artikel = $category->articles()->where('status', 'publish')->latest()->paginate(4);
         $categories = Category::all();
 
+        // dd($artikel);
         return view('home.kategori', [
-            'title' => 'News - Categories',
+            'title' => 'News - Categories ' . $category->name,
             'artikel' => $artikel,
             'category' => $category->name,
         ], compact('categories'));
