@@ -5,11 +5,14 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content="" />
         <meta name="author" content="" />
-        <title>{{ $artikel->title ?? 'News - Home' }}</title>
+        {{-- <title>{{ $artikel->title ?? 'News - Home' }}</title> --}}
+        <title>{{ $title }}</title>
         <!-- Favicon-->
         <link rel="icon" type="image/x-icon" href="{{ asset('home/favicon.ico') }}" />
         <!-- Core theme CSS (includes Bootstrap)-->
         <link href="{{ asset('home/css/styles.css') }}" rel="stylesheet" />
+        <!-- Bootstrap icons-->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
     </head>
     <body>
 
@@ -26,30 +29,8 @@
             </div>
         </header>
         
-        <div class="container">
-            <div class="row">
-                @yield('main')
-                <!-- Side widgets-->
-                <div class="col-lg-4">
-                    <!-- Search widget-->
-                    <div class="card mb-4">
-                        <div class="card-header">Search</div>
-                        <div class="card-body">
-                            <form action="/">
-                            <div class="input-group">
-                                    <input class="form-control" type="text" name="search" placeholder="Search artikel..." value="{{ old('search') }}"/>
-                                    <button class="btn btn-primary" type="submit">Search</button>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                    <!-- Categories widget-->
-                    @include('home.layouts.components.categories')
-                    <!-- Side widget-->
-                    @include('home.layouts.components.widget')
-                </div>
-            </div>
-        </div>
+        @yield('main')
+
         <!-- Footer-->
         <footer class="py-5 bg-primary">
             <div class="container"><p class="m-0 text-center text-white">Copyright &copy; Your Website 2022</p></div>

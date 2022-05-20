@@ -5,6 +5,14 @@
     <div class="row">
         <div class="col-lg-8">
             <div class="row">
+
+                <div class="mb-2">
+                    <h2>Berita berdasarkan kategori : {{ $category }}</h2>
+                </div>
+
+                <hr class="my-0 mb-4" />
+                
+        
                 @foreach ($artikel as $a)
                 <div class="col-lg-6">
                     <div class="card mb-4">
@@ -20,16 +28,16 @@
                     </div>
                 </div>
                 @endforeach
+                
             </div>
             <!-- Pagination-->
             <nav aria-label="Pagination">
                 <hr class="my-0 mb-2" />
                 <div class="d-flex justify-content-center">
-                    {{ $artikel->links('pagination::bootstrap-4') }}
+                    {{-- {{ $artikel->links('pagination::bootstrap-4') }} --}}
                 </div>
             </nav>
         </div> 
-        <!-- Side widgets-->
         <div class="col-lg-4">
             <!-- Search widget-->
             <div class="card mb-4">
@@ -64,4 +72,5 @@
         </div>
     </div>
 </div>
+
 @endsection

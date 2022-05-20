@@ -22,6 +22,8 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [HomeController::class, 'index']);
 // Single Pages
 Route::get('/artikel/{slug}', [HomeController::class, 'single']);
+// Category Pages
+Route::get('/kategori/{category:slug}', [HomeController::class, 'kategori']);
 
 
 Route::middleware(['auth'])->group(function () {
@@ -52,5 +54,5 @@ Route::middleware(['auth'])->group(function () {
     // // Update Data Article Berdasarkan slug
     Route::patch('/article/{id}', [ArticleController::class, 'update']);
     // // Menghapus Data Artikel Berdasarkan id
-    Route::delete('article/{slug}', [ArticleController::class, 'destroy']);
+    Route::delete('/article/{slug}', [ArticleController::class, 'destroy']);
 });

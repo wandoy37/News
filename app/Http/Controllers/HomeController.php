@@ -7,22 +7,23 @@ use App\Models\Category;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
+
 class HomeController extends Controller
 {
     public function index()
     {
-        // $artikel = Article::latest()->where('status', 'publish')->paginate(2);
-
-        // Method bang Duki 1st
+        // Mengambil Data Artikel berdasarkan status publish
         $artikel = Article::query()->whereStatus('publish');
         // Mengambil data category
-        $category = Category::all();
+        $categories = Category::all();
+
         // Mencari data berdasarkan nilai search
         if (request('search')) {
             $artikel->where('title', 'LIKE', '%' . request('search') . '%');
         }
         $artikel = $artikel->latest()->paginate(4);
-        return view('home.index', compact('artikel', 'category'));
+        $title = 'News - Home';
+        return view('home.index', compact('artikel', 'title', 'categories'));
     }
 
     public function single($slug)
@@ -30,7 +31,21 @@ class HomeController extends Controller
         // Mengambil data Artikel berdasarkan slug
         $artikel = Article::where('slug', $slug)->first();
         // Mengambil data category
-        $category = Category::all();
-        return view('home.single', compact('artikel', 'category'));
+        $categories = Category::all();
+        $title = 'News - ' . $artikel->title;
+        return view('home.single', compact('artikel', 'categories', 'title'));
+    }
+
+    public function kategori(Category $category)
+    {
+        $artikel = $category->articles->where('status', 'publish');
+
+        $categories = Category::all();
+
+        return view('home.kategori', [
+            'title' => 'News - Categories',
+            'artikel' => $artikel,
+            'category' => $category->name,
+        ], compact('categories'));
     }
 }
