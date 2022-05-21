@@ -53,7 +53,7 @@
                             <div class="col col-stats ml-3 ml-sm-0">
                                 <div class="numbers">
                                     <p class="card-category">Article</p>
-                                    <h4 class="card-title">{{ $artikel->total() }}</h4>
+                                    <h4 class="card-title">{{ $artikel }}</h4>
                                 </div>
                             </div>
                         </div>
@@ -73,7 +73,7 @@
                                 <div class="numbers">
                                     <p class="card-category">Category</p>
 
-                                    <h4 class="card-title">{{ $category->total() }}</h4>
+                                    <h4 class="card-title">{{ $category }}</h4>
                                 </div>
                             </div>
                         </div>

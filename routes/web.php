@@ -25,9 +25,18 @@ Route::get('/artikel/{slug}', [HomeController::class, 'single']);
 // Category Pages
 Route::get('/kategori/{category:slug}', [HomeController::class, 'kategori']);
 
+// About Pages
+Route::get('/about', function () {
+    return view('home.about', [
+        'title' => 'News - About Us'
+    ]);
+});
+
 
 Route::middleware(['auth'])->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+
+    //Route::resource('/category',[CategoryController::class]);
 
     // Route Category
     // Menampilkan View Data Category

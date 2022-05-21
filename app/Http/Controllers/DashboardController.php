@@ -10,8 +10,8 @@ class DashboardController extends Controller
 {
     public function index()
     {
-        $categories = Category::paginate(3);
-        $article = Article::paginate(3);
+        $categories = Category::count();
+        $article = Article::count();
         return view('dashboard.home', [
             'category' => $categories,
             'artikel' => $article,

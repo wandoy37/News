@@ -1,6 +1,8 @@
 @extends('home.layouts.app')
 
 @section('main')
+
+@include('home.layouts.components.banner')
 <div class="container">
     <div class="row">
         <div class="col-lg-8">

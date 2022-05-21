@@ -1,6 +1,9 @@
 @extends('home.layouts.app')
 
 @section('main')
+
+@include('home.layouts.components.banner')
+
 <div class="container">
     <div class="row">
         <div class="col-lg-8">
@@ -51,7 +54,7 @@
             <nav aria-label="Pagination">
                 <hr class="my-0 mb-2" />
                 <div class="d-flex justify-content-center">
-                    {{ $artikel->links('pagination::bootstrap-4') }}
+                    {{-- {{ $artikel->links('pagination::bootstrap-4') }} --}}
                 </div>
             </nav>
         </div> 
