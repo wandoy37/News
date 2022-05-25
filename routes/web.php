@@ -1,9 +1,11 @@
 <?php
 
+use App\Http\Controllers\AboutController;
 use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\HomeController;
+use App\Models\About;
 use App\Models\Article;
 use App\Models\Category;
 use Illuminate\Support\Facades\Route;
@@ -26,19 +28,13 @@ Route::get('/artikel/{slug}', [HomeController::class, 'single']);
 Route::get('/kategori/{category:slug}', [HomeController::class, 'kategori']);
 
 // About Pages
-Route::get('/about', function () {
-    return view('home.about', [
-        'title' => 'News - About Us'
-    ]);
-});
+Route::get('/about', [AboutController::class, 'index']);
 
 
-Route::middleware(['auth'])->group(function () {
+Route::prefix('admin')->middleware(['auth'])->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
-    //Route::resource('/category',[CategoryController::class]);
-
-    // Route Category
+    // Route Category Management
     // Menampilkan View Data Category
     Route::get('/category', [CategoryController::class, 'index'])->name('category');
     // Menampilkan View Tambah Data Category
@@ -52,7 +48,7 @@ Route::middleware(['auth'])->group(function () {
     // // Menghapus Data Category Berdasarkan id
     Route::delete('category/{id}', [CategoryController::class, 'destroy']);
 
-    // Route Article
+    // Route Article Management
     Route::get('/article', [ArticleController::class, 'index'])->name('article');
     // Menampilkan View Tambah Data Artikel
     Route::get('/article/create', [ArticleController::class, 'create']);
@@ -64,4 +60,7 @@ Route::middleware(['auth'])->group(function () {
     Route::patch('/article/{id}', [ArticleController::class, 'update']);
     // // Menghapus Data Artikel Berdasarkan id
     Route::delete('/article/{slug}', [ArticleController::class, 'destroy']);
+
+    // Rout About Management
+
 });
