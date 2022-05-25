@@ -31,7 +31,7 @@ class CategoryController extends Controller
             'slug' => Str::slug($request->name, '-'),
         ]);
 
-        return redirect('/category');
+        return redirect('admin/category');
     }
 
     public function edit($id)
@@ -48,7 +48,7 @@ class CategoryController extends Controller
             'name' => $request->name,
             'slug' => Str::slug($request->name, '-'),
         ]);
-        return redirect('/category');
+        return redirect('admin/category');
     }
 
     // Delete or Drop Data
@@ -56,6 +56,6 @@ class CategoryController extends Controller
     {
         $categories = Category::find($id);
         $categories->delete();
-        return redirect('/category');
+        return redirect('admin/category');
     }
 }

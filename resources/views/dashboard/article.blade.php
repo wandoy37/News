@@ -23,7 +23,7 @@
 
         <div class="row mb-4">
             <div class="col-md">
-                <a href="{{ url('/article/create') }}" class="btn btn-primary btn-rounded">Add Article</a>
+                <a href="{{ url('admin/article/create') }}" class="btn btn-primary btn-rounded">Add Article</a>
             </div>
         </div>
 
@@ -71,9 +71,9 @@
                                         @endif
                                     </td>
                                     <td class="text-center">
-                                        <form action="{{ url("article/$a->slug") }}" method="POST">
+                                        <form action="{{ url("admin/article/$a->slug") }}" method="POST">
                                             @csrf @method('DELETE')
-                                            <a href="{{ url("/article/$a->slug/edit") }}" class="btn btn-primary btn-round btn-sm">Edit</a>
+                                            <a href="{{ url("admin/article/$a->slug/edit") }}" class="btn btn-primary btn-round btn-sm">Edit</a>
                                             <button type="submit" class="btn btn-danger btn-round btn-sm">Delete</button>
                                         </form>
                                     </td>

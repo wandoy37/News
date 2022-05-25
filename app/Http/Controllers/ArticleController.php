@@ -44,7 +44,7 @@ class ArticleController extends Controller
             'status' => $request->status,
         ]);
 
-        return redirect('/article');
+        return redirect('admin/article');
     }
 
     public function edit($slug)
@@ -76,7 +76,7 @@ class ArticleController extends Controller
         $artikel->update($data);
 
 
-        return redirect('/article');
+        return redirect('admin/article');
     }
 
     // Delete or Drop Data
@@ -87,6 +87,6 @@ class ArticleController extends Controller
             Storage::delete($artikel->image);
         }
         $artikel->delete($artikel);
-        return redirect('/article');
+        return redirect('admin/article');
     }
 }

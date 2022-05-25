@@ -33,7 +33,7 @@
             </div>
         </div>
 
-        <form action="{{ url("/article/$artikel->id") }}" method="POST" enctype="multipart/form-data">
+        <form action="{{ url("admin/article/$artikel->id") }}" method="POST" enctype="multipart/form-data">
             @csrf @method('PATCH')
             <div class="row">
                 <div class="col-md-12">

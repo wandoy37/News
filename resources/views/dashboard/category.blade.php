@@ -60,9 +60,9 @@
                                     <td class="text-capitalize">{{ $d->name }}</td>
                                     <td>{{ $d->slug }}</td>
                                     <td class="text-center">
-                                        <form action="{{ url("category/$d->id") }}" method="POST">
+                                        <form action="{{ url("admin/category/$d->id") }}" method="POST">
                                             @csrf @method('DELETE')
-                                            <a href="{{ url("/category/$d->id/edit") }}" class="btn btn-primary btn-round btn-sm">Edit</a>
+                                            <a href="{{ url("admin/category/$d->id/edit") }}" class="btn btn-primary btn-round btn-sm">Edit</a>
                                             <button type="submit" class="btn btn-danger btn-round btn-sm">delete</button>
                                         </form>
                                     </td>
@@ -88,7 +88,7 @@
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
-                    <form action="{{ url('/category') }}" method="post">
+                    <form action="{{ url('admin/category') }}" method="post">
                         @csrf
                         <div class="modal-body">
                             <div class="form-group">

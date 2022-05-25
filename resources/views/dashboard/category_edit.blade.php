@@ -41,7 +41,7 @@
             <div class="col-md-6">
                 <div class="card card-stats card-round">
                     <div class="card-body">
-                        <form action="{{ url("/category/$categories->id") }}" method="POST">
+                        <form action="{{ url("admin/category/$categories->id") }}" method="POST">
                             @csrf @method('PATCH')
                             <div class="form-group">
                                 <label for="name">Name Category</label>
