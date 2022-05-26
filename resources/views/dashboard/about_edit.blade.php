@@ -35,14 +35,32 @@
                             @csrf @method('PATCH')
                             <div class="form-group">
                                 <label for="descripton">Description</label>
+                                <br>
+                                    @error('description')
+                                        <span class="text-danger">
+                                            {{ $message }}
+                                        </span>
+                                    @enderror
                                 <textarea class="form-control" name="description" id="descripton" rows="4">{{ old('name', $about->description ) }}</textarea>
                             </div>
                             <div class="form-group">
                                 <label for="visi">Visi</label>
+                                <br>
+                                    @error('visi')
+                                        <span class="text-danger">
+                                            {{ $message }}
+                                        </span>
+                                    @enderror
                                 <textarea class="form-control" name="visi" id="visi" rows="4">{{ old('name', $about->visi ) }}</textarea>
                             </div>
                             <div class="form-group">
                                 <label for="misi">Misi</label>
+                                <br>
+                                    @error('misi')
+                                        <span class="text-danger">
+                                            {{ $message }}
+                                        </span>
+                                    @enderror
                                 <textarea class="form-control" name="misi" id="misi" rows="4">{{ old('name', $about->misi ) }}</textarea>
                             </div>
                             <div class="form-group d-flex justify-content-end">

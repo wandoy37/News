@@ -46,6 +46,19 @@
                 </div>
             </div>
         </div>
+        <div class="row">
+            @foreach ($team as $team)
+            <div class="col-6">
+                <div class="text-center">
+                    <img class="img-fluid rounded-circle mb-4 px-4" src="{{ $team->image }}" alt="..." />
+                    <a href="http://">
+                        <h5 class="fw-bolder">{{ $team->name }}</h5>
+                    </a>
+                    <div class="fst-italic text-muted">{{ $team->position }}</div>
+                </div>
+            </div>
+            @endforeach
+        </div>
     </div>
 </div>
 
