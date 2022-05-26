@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Article;
 use App\Models\Category;
+use App\Models\About;
+use App\Models\Team;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -47,5 +49,13 @@ class HomeController extends Controller
             'artikel' => $artikel,
             'category' => $category->name,
         ], compact('categories'));
+    }
+
+    public function about()
+    {
+        $about = About::all()->first();
+        $team = Team::all();
+        $title = ('News - About Us');
+        return view('home.about', compact('title', 'about', 'team'));
     }
 }

@@ -40,24 +40,36 @@
                     <span class="sidebar-mini-icon">
                         <i class="fa fa-ellipsis-h"></i>
                     </span>
-                    <h4 class="text-section">Menu Navigation</h4>
+                    <h4 class="text-section">Content Management</h4>
                 </li>
-                <li class="nav-item {{ (request()->segment(1) == 'dashboard') ? 'active' : '' }}">
+                <li class="nav-item {{ (request()->segment(2) == 'dashboard') ? 'active' : '' }}">
                     <a href="{{ route('dashboard') }}">
                         <i class="far icon-home"></i>
                         <p>Dashboard</p>
                     </a>
                 </li>
-                <li class="nav-item {{ (request()->segment(1) == 'category') ? 'active' : '' }}">
+                <li class="nav-item {{ (request()->segment(2) == 'category') ? 'active' : '' }}">
                     <a href="{{ route('category') }}">
                         <i class="flaticon-shapes"></i>
                         <p>Category</p>
                     </a>
                 </li>
-                <li class="nav-item {{ (request()->segment(1) == 'article') ? 'active' : '' }}">
+                <li class="nav-item {{ (request()->segment(2) == 'article') ? 'active' : '' }}">
                     <a href="{{ route('article') }}">
                         <i class="flaticon-interface-6"></i>
                         <p>Article</p>
+                    </a>
+                </li>
+                <li class="nav-section">
+                    <span class="sidebar-mini-icon">
+                        <i class="fa fa-ellipsis-h"></i>
+                    </span>
+                    <h4 class="text-section">Pages</h4>
+                </li>
+                <li class="nav-item {{ (request()->segment(2) == 'about') ? 'active' : '' }}">
+                    <a href="{{ route('about') }}">
+                        <i class="flaticon-agenda"></i>
+                        <p>About</p>
                     </a>
                 </li>
                 <li class="nav-item">

@@ -12,13 +12,31 @@ class AboutController extends Controller
     public function index()
     {
         $about = About::all()->first();
-        $team = Team::all();
-        $title = ('News - About Us');
-        return view('home.about', compact('title', 'about', 'team'));
+        return view('dashboard.about', compact('about'));
     }
 
-    public function show()
+    public function edit($id)
     {
-        return view('dashboard.about');
+        $about = About::find($id);
+        return view('dashboard.about_edit', compact('about'));
+    }
+
+    public function update(Request $request, $id)
+    {
+        $about = About::find($id);
+
+        $about->update([
+            'description' => $request->description,
+            'visi' => $request->visi,
+            'misi' => $request->misi,
+        ]);
+        return redirect('/admin/about');
+    }
+
+    public function destroy($id)
+    {
+        $about = About::find($id);
+        $about->delete();
+        return redirect('admin/about');
     }
 }

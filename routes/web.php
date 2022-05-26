@@ -28,7 +28,7 @@ Route::get('/artikel/{slug}', [HomeController::class, 'single']);
 Route::get('/kategori/{category:slug}', [HomeController::class, 'kategori']);
 
 // About Pages
-Route::get('/about', [AboutController::class, 'index']);
+Route::get('/about', [HomeController::class, 'about']);
 
 
 Route::prefix('admin')->middleware(['auth'])->group(function () {
@@ -61,6 +61,11 @@ Route::prefix('admin')->middleware(['auth'])->group(function () {
     // // Menghapus Data Artikel Berdasarkan id
     Route::delete('/article/{slug}', [ArticleController::class, 'destroy']);
 
-    // Rout About Management
 
+    // Route About Management
+    Route::get('/about', [AboutController::class, 'index'])->name('about');
+    // // Menampilkan Data About berdasarkan id
+    Route::get('/about/{id}/edit', [AboutController::class, 'edit']);
+    // // Update Data About Berdasarkan id
+    Route::patch('/about/{id}', [AboutController::class, 'update']);
 });
