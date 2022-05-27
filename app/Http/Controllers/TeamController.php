@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\TeamRequest;
 use App\Models\Team;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
@@ -15,7 +16,7 @@ class TeamController extends Controller
         return view('dashboard.team_edit', compact('team'));
     }
 
-    public function update(Request $request, $id)
+    public function update(TeamRequest $request, $id)
     {
         $team = Team::find($id);
         $data = [

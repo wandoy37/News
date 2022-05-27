@@ -35,10 +35,22 @@
                             @csrf @method('PATCH')
                             <div class="form-group">
                                 <label for="name">Nama Lengkap</label>
+                                <br>
+                                    @error('name')
+                                        <span class="text-danger">
+                                            {{ $message }}
+                                        </span>
+                                    @enderror
                                 <input type="text" class="form-control" name="name" id="name" placeholder="Nama lengkap.." value="{{ old('name', $team->name) }}">
                             </div>
                             <div class="form-group">
                                 <label for="name">Posisi / Jabatan</label>
+                                <br>
+                                    @error('position')
+                                        <span class="text-danger">
+                                            {{ $message }}
+                                        </span>
+                                    @enderror
                                 <input type="text" class="form-control" name="position" id="position" placeholder="Nama lengkap.." value="{{ old('position', $team->position) }}">
                             </div>
                             <div class="form-group">
