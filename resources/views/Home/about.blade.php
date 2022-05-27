@@ -50,7 +50,11 @@
             @foreach ($team as $team)
             <div class="col mb-5 mb-5 mb-xl-0">
                 <div class="text-center">
-                    <img class="img-fluid rounded-circle mb-4 px-4" src="{{ $team->image }}" alt="..." />
+                    @if ($team->image)
+                        <img src="{{ asset('storage/' . $team->image) }}" class="img-fluid mt-3 avatar avatar-xl avatar-img rounded-circle" width="100px" alt="image..">
+                    @else
+                        <img class="img-fluid mt-3 avatar avatar-xl avatar-img rounded-circle" src="{{ asset('storage/avatar/profile.jpg') }}" width="100px" alt="image..">
+                    @endif
                     <h5 class="fw-bolder">{{ $team->name }}</h5>
                     <div class="fst-italic text-muted">{{ $team->position }}</div>
                 </div>

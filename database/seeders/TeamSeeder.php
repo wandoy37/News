@@ -18,14 +18,14 @@ class TeamSeeder extends Seeder
             [
                 'name' => 'Name Ketua',
                 'position' => 'Ketua',
-                'image' => 'https://dummyimage.com/150x150/ced4da/6c757d',
+                'image' => 'avatar/profile.jpg',
             ]
         );
         Team::create(
             [
                 'name' => 'Name Wakil',
                 'position' => 'Wakil',
-                'image' => 'https://dummyimage.com/150x150/ced4da/6c757d',
+                'image' => 'avatar/profile.jpg',
             ]
         );
     }

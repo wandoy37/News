@@ -5,9 +5,11 @@ use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\TeamController;
 use App\Models\About;
 use App\Models\Article;
 use App\Models\Category;
+use App\Models\Team;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -66,6 +68,10 @@ Route::prefix('admin')->middleware(['auth'])->group(function () {
     Route::get('/about', [AboutController::class, 'index'])->name('about');
     // // Menampilkan Data About berdasarkan id
     Route::get('/about/{id}/edit', [AboutController::class, 'edit']);
-    // // Update Data About Berdasarkan id
+    // Update Data Cetegory Berdasarkan id
     Route::patch('/about/{id}', [AboutController::class, 'update']);
+
+    // Menampilkan Data Team berdasarkan id
+    Route::get('/team/{id}/edit', [TeamController::class, 'edit']);
+    Route::patch('/team/{id}', [TeamController::class, 'update']);
 });

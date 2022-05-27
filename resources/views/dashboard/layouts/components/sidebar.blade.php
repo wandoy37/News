@@ -66,7 +66,7 @@
                     </span>
                     <h4 class="text-section">Pages</h4>
                 </li>
-                <li class="nav-item {{ (request()->segment(2) == 'about') ? 'active' : '' }}">
+                <li class="nav-item {{ (request()->segment(2) == 'about') ? 'active' : '' }} {{ (request()->segment(2) == 'team') ? 'active' : '' }}">
                     <a href="{{ route('about') }}">
                         <i class="flaticon-agenda"></i>
                         <p>About</p>

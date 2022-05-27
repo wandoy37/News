@@ -47,17 +47,40 @@
             </div>
         </div>
         <div class="row">
-            @foreach ($team as $team)
-            <div class="col-6">
-                <div class="text-center">
-                    <img class="img-fluid rounded-circle mb-4 px-4" src="{{ $team->image }}" alt="..." />
-                    <a href="http://">
-                        <h5 class="fw-bolder">{{ $team->name }}</h5>
-                    </a>
-                    <div class="fst-italic text-muted">{{ $team->position }}</div>
+            <div class="col-md-12">
+                <div class="card card-stats card-round">
+                    <div class="card-body">
+                        <table class="table table-hover">
+                            <thead>
+                                <tr class="text-center">
+                                    <th scope="col">Name</th>
+                                    <th scope="col">Position / Jabatan</th>
+                                    <th scope="col">Image</th>
+                                    <th scope="col"></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach ($team as $team)
+                                <tr class="text-center">
+                                    <td>{{ $team->name }}</td>
+                                    <td>{{ $team->position }}</td>
+                                    <td>
+                                        @if ($team->image)
+                                            <img src="{{ asset('storage/' . $team->image) }}" class="img-fluid mt-3 avatar avatar-xl avatar-img rounded-circle" width="100px" alt="image..">
+                                        @else
+                                            <img class="img-fluid mt-3 avatar avatar-xl avatar-img rounded-circle" src="{{ asset('storage/avatar/profile.jpg') }}" width="100px" alt="image..">
+                                        @endif
+                                    </td>
+                                    <td>
+                                        <a href="{{ url("admin/team/$team->id/edit") }}">Edit</a>
+                                    </td>
+                                </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
-            @endforeach
         </div>
     </div>
 </div>
