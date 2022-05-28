@@ -34,11 +34,7 @@ Route::get('/kategori/{category:slug}', [HomeController::class, 'kategori']);
 Route::get('/about', [HomeController::class, 'about']);
 
 // Contact Pages
-Route::get('/contact', function () {
-    return view('home.contact', [
-        'title' => 'News - Contact'
-    ]);
-});
+Route::get('/contact', [HomeController::class, 'contact']);
 
 
 Route::prefix('admin')->middleware(['auth'])->group(function () {
