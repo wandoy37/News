@@ -32,6 +32,13 @@ Route::get('/kategori/{category:slug}', [HomeController::class, 'kategori']);
 // About Pages
 Route::get('/about', [HomeController::class, 'about']);
 
+// Contact Pages
+Route::get('/contact', function () {
+    return view('home.contact', [
+        'title' => 'News - Contact'
+    ]);
+});
+
 
 Route::prefix('admin')->middleware(['auth'])->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
