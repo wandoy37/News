@@ -72,6 +72,12 @@
                         <p>About</p>
                     </a>
                 </li>
+                <li class="nav-item {{ (request()->segment(2) == 'contact') ? 'active' : '' }} {{ (request()->segment(2) == 'team') ? 'active' : '' }}">
+                    <a href="{{ route('contact') }}">
+                        <i class="icon-book-open"></i>
+                        <p>Contact</p>
+                    </a>
+                </li>
                 <li class="nav-item">
                     <a href="{{ url('/settings') }}">
                         <i class="flaticon-settings"></i>

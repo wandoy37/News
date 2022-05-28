@@ -3,6 +3,7 @@
 use App\Http\Controllers\AboutController;
 use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\ContactController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\TeamController;
@@ -81,4 +82,7 @@ Route::prefix('admin')->middleware(['auth'])->group(function () {
     // Menampilkan Data Team berdasarkan id
     Route::get('/team/{id}/edit', [TeamController::class, 'edit']);
     Route::patch('/team/{id}', [TeamController::class, 'update']);
+
+    // Route Contact Management
+    Route::get('/contact', [ContactController::class, 'index'])->name('contact');
 });
