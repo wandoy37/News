@@ -21,11 +21,22 @@
             </ul>
         </div>
 
+        @if ($errors->any())
+            <div class="alert alert-danger font-weight-bold">
+                    @foreach ($errors->all() as $error)
+                <span>
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </span>
+            </div>
+        @endif
+
         <div class="row">
             <div class="col-md-12">
                 <div class="card card-stats card-round">
                     <div class="card-body">
-                        <form action="">
+                        <form action="{{ url("admin/contact/$contact->id") }}" method="POST">
+                            @csrf @method('PATCH')
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group">

@@ -85,4 +85,6 @@ Route::prefix('admin')->middleware(['auth'])->group(function () {
 
     // Route Contact Management
     Route::get('/contact', [ContactController::class, 'index'])->name('contact');
+    // Update Data Contact Berdasarkan id
+    Route::patch('/contact/{id}', [ContactController::class, 'update']);
 });
